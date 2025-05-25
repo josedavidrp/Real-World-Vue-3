@@ -11,7 +11,7 @@ const router = createRouter({
       component: EventListView,
     },
     {
-      path: '/about',
+      path: '/sobre-la-web',
       name: 'about',
       component: AboutView,
     },
