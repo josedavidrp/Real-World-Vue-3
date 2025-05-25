@@ -19,9 +19,14 @@ const router = createRouter({
       path: '/sobre-la-web',
       name: 'about',
       component: AboutView,
+      alias: '/mas-info',
     },
     {
-      path: '/event/:id',
+      path: '/about',
+      redirect: { name: 'about' },
+    },
+    {
+      path: '/eventos/:id',
       name: 'EventLayout',
       props: true,
       component: EventLayout,
@@ -42,6 +47,12 @@ const router = createRouter({
           component: EventEdit,
         },
       ],
+    },
+    {
+      path: '/event/:afterEvent(.*)',
+      redirect: (to) => {
+        return { path: '/eventos/' + to.params.afterEvent }
+      },
     },
   ],
 })
