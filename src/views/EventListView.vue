@@ -13,13 +13,13 @@ const hasNextPage = computed(() => {
 })
 const router = useRouter()
 const fetchEvents = () => {
-  EventService.getEvents(2, props.page)
+  EventService.getEvents(3, props.page)
     .then((response) => {
       events.value = response.data
       totalEvents.value = response.headers['x-total-count']
-      totalPages.value = Math.ceil(totalEvents.value / 2)
+      totalPages.value = Math.ceil(totalEvents.value / 3)
     })
-    .catch((error) => {
+    .catch(() => {
       router.push({ name: 'NetworkError' })
     })
 }
