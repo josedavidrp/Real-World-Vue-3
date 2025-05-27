@@ -1,12 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '../views/EventListView.vue'
-import AboutView from '@/views/AboutView.vue'
 import EventLayout from '@/views/event/Layout.vue'
-import EventDetails from '@/views/event/Details.vue'
-import EventRegister from '@/views/event/Register.vue'
-import EventEdit from '@/views/event/Edit.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
+
+const AboutView = () => import(/* webpackChunkName: "about" */ '@/views/AboutView.vue')
+
+const EventDetails = () =>
+  import(/* webpackChunkName: "EventDetails" */ '@/views/event/Details.vue')
+const EventRegister = () =>
+  import(/* webpackChunkName: "EventDetails" */ '@/views/event/Register.vue')
+const EventEdit = () => import(/* webpackChunkName: "EventDetails" */ '@/views/event/Edit.vue')
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
